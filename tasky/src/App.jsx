@@ -12,6 +12,7 @@ function App() {
         description: "Empty dishwasher",
         deadline: "Today",
         priority: "Low",
+        done: false,
       },
       {
         id: 2,
@@ -19,23 +20,39 @@ function App() {
         description: "Fold clothes and put away",
         deadline: "Tomorrow",
         priority: "Medium",
+        done: false,
       },
-      { id: 3, title: "Tidy up", deadline: "Today", priority: "High" },
+      {
+        id: 3,
+        title: "Tidy up",
+        deadline: "Today",
+        priority: "High",
+        done: false,
+      },
     ],
   });
+
+  //insert done handler
+  const doneHandler = (taskIndex) => {
+    const tasks = [...taskState.tasks];
+    tasks[taskIndex].done = !tasks[taskIndex].done;
+    setTaskState({ tasks });
+    console.log(`${taskIndex} ${tasks[taskIndex].done}`);
+  };
 
   return (
     <div className="container">
       <h1>Tasky</h1>
 
-      {taskState.tasks.map((task) => (
+      {taskState.tasks.map((task, index) => (
         <Task
           title={task.title}
           description={task.description}
           deadline={task.deadline}
           key={task.id}
           priority={task.priority}
-
+          done={task.done}
+          markDone={() => doneHandler(index)}
         />
       ))}
     </div>
