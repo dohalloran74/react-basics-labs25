@@ -11,14 +11,16 @@ function App() {
         title: "Dishes",
         description: "Empty dishwasher",
         deadline: "Today",
+        priority: "Low",
       },
       {
         id: 2,
         title: "Laundry",
         description: "Fold clothes and put away",
         deadline: "Tomorrow",
+        priority: "Medium",
       },
-      { id: 3, title: "Tidy up", deadline: "Today" },
+      { id: 3, title: "Tidy up", deadline: "Today", priority: "High" },
     ],
   });
 
@@ -32,6 +34,8 @@ function App() {
           description={task.description}
           deadline={task.deadline}
           key={task.id}
+          priority={task.priority}
+
         />
       ))}
     </div>
