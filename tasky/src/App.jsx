@@ -1,3 +1,5 @@
+import AddTaskForm from "./components/Form";
+
 import React, { useState } from "react";
 
 import "./App.css";
@@ -40,13 +42,12 @@ function App() {
     console.log(`${taskIndex} ${tasks[taskIndex].done}`);
   };
   //insert a deletehandler to delete tasks
-  
-    const deleteHandler = (taskIndex) => {
-      const tasks = [...taskState.tasks];
-      tasks.splice(taskIndex, 1);
-      setTaskState({ tasks });
-    }; 
 
+  const deleteHandler = (taskIndex) => {
+    const tasks = [...taskState.tasks];
+    tasks.splice(taskIndex, 1);
+    setTaskState({ tasks });
+  };
 
   return (
     <div className="container">
@@ -64,6 +65,8 @@ function App() {
           deleteTask={() => deleteHandler(index)}
         />
       ))}
+
+      <AddTaskForm />
     </div>
   );
 }
