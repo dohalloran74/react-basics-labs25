@@ -9,7 +9,21 @@ const Task = (props) => {
       <p className="title">{props.title}</p>
       <p>Due: {props.deadline}</p>
       <p className="description">{props.description}</p>
-      <p>{props.priority}</p>
+      
+      <p
+        style={{
+          backgroundColor:
+            props.priority === "High"
+              ? "red"
+              : props.priority === "Medium"
+              ? "goldenrod"
+              : "green",
+          padding: "0.2em",
+          borderRadius: "0.4em",
+        }}
+      >
+        {props.priority}
+      </p>
 
       <button onClick={props.markDone} className="doneButton">
         Done
